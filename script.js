@@ -226,14 +226,36 @@ document.addEventListener('DOMContentLoaded', () => {
         </svg> Sending...`;
       formStatus.style.display = 'none';
 
-      // Simulate server latency
-      setTimeout(() => {
-        // Success response
-        showStatus('Thank you! Your message has been sent successfully.', 'success');
-        contactForm.reset();
+      // Send real email using FormSubmit AJAX
+      fetch("https://formsubmit.co/ajax/suchethanreddychalla043@gmail.com", {
+        method: "POST",
+        headers: { 
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          message: message,
+          _subject: `New Portfolio Message from ${name}`
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success === "true" || data.success === true) {
+          showStatus('Thank you! Your message has been sent successfully.', 'success');
+          contactForm.reset();
+        } else {
+          showStatus('Something went wrong. Please try again.', 'error');
+        }
+      })
+      .catch(err => {
+        showStatus('Could not send message. Check your internet connection.', 'error');
+      })
+      .finally(() => {
         submitBtn.disabled = false;
         submitBtn.innerHTML = submitBtnText;
-      }, 1500);
+      });
     });
 
     function showStatus(text, type) {
