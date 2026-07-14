@@ -1002,6 +1002,73 @@ header.scrolled {
   height: 16px;
 }
 
+/* --- Certificates Section --- */
+.certificates-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.certificate-card {
+  padding: 2.2rem;
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  height: 100%;
+}
+
+.certificate-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: rgba(37, 99, 235, 0.08);
+  color: var(--primary);
+  flex-shrink: 0;
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.1);
+}
+
+.certificate-badge svg {
+  width: 26px;
+  height: 26px;
+}
+
+.certificate-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.certificate-date {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+}
+
+.certificate-title {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.35;
+  color: var(--foreground);
+}
+
+.certificate-issuer {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--foreground);
+  margin-bottom: 0.25rem;
+}
+
+.certificate-provider {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
 /* --- Resume Section --- */
 .resume-container {
   display: flex;
