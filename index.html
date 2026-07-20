@@ -8,6 +8,8 @@
   <meta name="author" content="Suchethan Reddy">
   <!-- Stylesheet link -->
   <link rel="stylesheet" href="style.css">
+  <!-- PDF.js for rendering certificate previews -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 </head>
 <body>
 
@@ -514,70 +516,108 @@
       <h2 class="section-title">Certifications</h2>
       <p class="section-subtitle">A collection of industry-recognized professional certificates and credentials.</p>
 
-      <div class="certificates-grid">
-        <!-- Certificate 1 -->
-        <a href="assets/python_essentials_1.pdf" target="_blank" rel="noopener noreferrer" class="certificate-card glass reveal" style="text-decoration: none; color: inherit; display: flex;">
-          <div class="certificate-badge">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-              <path d="M9 11l3 3 6-6"/>
-            </svg>
-          </div>
-          <div class="certificate-content">
-            <span class="certificate-date">24 Feb 2026</span>
-            <h3 class="certificate-title">Python Essentials 1</h3>
-            <p class="certificate-issuer">Cisco Networking Academy</p>
-            <p class="certificate-provider">Offered by Maharaj Vijayram Gajapathi Raj College of Engineering</p>
-          </div>
-        </a>
+      <div class="certificates-slider-wrapper">
+        <button class="slider-arrow prev-arrow" id="cert-prev" aria-label="Previous Certificates">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
 
-        <!-- Certificate 2 -->
-        <a href="assets/python_essentials_2.pdf" target="_blank" rel="noopener noreferrer" class="certificate-card glass reveal reveal-delay-1" style="text-decoration: none; color: inherit; display: flex;">
-          <div class="certificate-badge">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-              <path d="M9 11l3 3 6-6"/>
-            </svg>
-          </div>
-          <div class="certificate-content">
-            <span class="certificate-date">17 Mar 2026</span>
-            <h3 class="certificate-title">Python Essentials 2</h3>
-            <p class="certificate-issuer">Cisco Networking Academy</p>
-            <p class="certificate-provider">Offered by Maharaj Vijayram Gajapathi Raj College of Engineering</p>
-          </div>
-        </a>
+        <div class="certificates-slider" id="certificates-slider">
+          <!-- Certificate 1 -->
+          <a href="assets/python_essentials_1.pdf" target="_blank" rel="noopener noreferrer" class="certificate-slide-card">
+            <div class="cert-preview-box">
+              <canvas class="pdf-canvas" data-pdf="assets/python_essentials_1.pdf"></canvas>
+              <div class="cert-preview-fallback">
+                <div class="cert-fallback-header">
+                  <span class="cert-fallback-logo">CISCO</span>
+                  <span class="cert-fallback-badge">VERIFIED</span>
+                </div>
+                <p class="cert-fallback-name">Python Essentials 1</p>
+                <div class="cert-fallback-seal"></div>
+              </div>
+            </div>
+            <div class="cert-info-box">
+              <div class="cert-date-tag">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                FEB 2026
+              </div>
+              <h3 class="cert-title-text">PYTHON ESSENTIALS 1</h3>
+              <span class="cert-issuer-tag">CISCO</span>
+            </div>
+          </a>
 
-        <!-- Certificate 3 -->
-        <a href="assets/data_visualisation.pdf" target="_blank" rel="noopener noreferrer" class="certificate-card glass reveal reveal-delay-2" style="text-decoration: none; color: inherit; display: flex;">
-          <div class="certificate-badge">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-              <path d="M9 11l3 3 6-6"/>
-            </svg>
-          </div>
-          <div class="certificate-content">
-            <span class="certificate-date">July 13th, 2026</span>
-            <h3 class="certificate-title">Data Visualisation: Empowering Business with Effective Insights</h3>
-            <p class="certificate-issuer">TATA & Forage</p>
-            <p class="certificate-provider">Credential: 6a531e456e8414e4b8c7cce5</p>
-          </div>
-        </a>
+          <!-- Certificate 2 -->
+          <a href="assets/python_essentials_2.pdf" target="_blank" rel="noopener noreferrer" class="certificate-slide-card">
+            <div class="cert-preview-box">
+              <canvas class="pdf-canvas" data-pdf="assets/python_essentials_2.pdf"></canvas>
+              <div class="cert-preview-fallback">
+                <div class="cert-fallback-header">
+                  <span class="cert-fallback-logo">CISCO</span>
+                  <span class="cert-fallback-badge">VERIFIED</span>
+                </div>
+                <p class="cert-fallback-name">Python Essentials 2</p>
+                <div class="cert-fallback-seal"></div>
+              </div>
+            </div>
+            <div class="cert-info-box">
+              <div class="cert-date-tag">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                MARCH 2026
+              </div>
+              <h3 class="cert-title-text">PYTHON ESSENTIALS 2</h3>
+              <span class="cert-issuer-tag">CISCO</span>
+            </div>
+          </a>
 
-        <!-- Certificate 4 -->
-        <a href="assets/excel_certificate.pdf" target="_blank" rel="noopener noreferrer" class="certificate-card glass reveal reveal-delay-3" style="text-decoration: none; color: inherit; display: flex;">
-          <div class="certificate-badge">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-              <path d="M9 11l3 3 6-6"/>
-            </svg>
-          </div>
-          <div class="certificate-content">
-            <span class="certificate-date">20 July 2026</span>
-            <h3 class="certificate-title">Introduction to MS Excel</h3>
-            <p class="certificate-issuer">Microsoft (Simplilearn SkillUp)</p>
-            <p class="certificate-provider">Credential Code: 10491527</p>
-          </div>
-        </a>
+          <!-- Certificate 3 -->
+          <a href="assets/data_visualisation.pdf" target="_blank" rel="noopener noreferrer" class="certificate-slide-card">
+            <div class="cert-preview-box">
+              <canvas class="pdf-canvas" data-pdf="assets/data_visualisation.pdf"></canvas>
+              <div class="cert-preview-fallback">
+                <div class="cert-fallback-header">
+                  <span class="cert-fallback-logo">TATA</span>
+                  <span class="cert-fallback-badge">FORAGE</span>
+                </div>
+                <p class="cert-fallback-name">Data Visualisation: Insights</p>
+                <div class="cert-fallback-seal"></div>
+              </div>
+            </div>
+            <div class="cert-info-box">
+              <div class="cert-date-tag">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                JULY 2026
+              </div>
+              <h3 class="cert-title-text">DATA VISUALISATION</h3>
+              <span class="cert-issuer-tag">TATA & FORAGE</span>
+            </div>
+          </a>
+
+          <!-- Certificate 4 -->
+          <a href="assets/excel_certificate.pdf" target="_blank" rel="noopener noreferrer" class="certificate-slide-card">
+            <div class="cert-preview-box">
+              <canvas class="pdf-canvas" data-pdf="assets/excel_certificate.pdf"></canvas>
+              <div class="cert-preview-fallback">
+                <div class="cert-fallback-header">
+                  <span class="cert-fallback-logo">MICROSOFT</span>
+                  <span class="cert-fallback-badge">SKILLUP</span>
+                </div>
+                <p class="cert-fallback-name">Introduction to MS Excel</p>
+                <div class="cert-fallback-seal"></div>
+              </div>
+            </div>
+            <div class="cert-info-box">
+              <div class="cert-date-tag">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                JULY 2026
+              </div>
+              <h3 class="cert-title-text">INTRODUCTION TO MS EXCEL</h3>
+              <span class="cert-issuer-tag">MICROSOFT</span>
+            </div>
+          </a>
+        </div>
+
+        <button class="slider-arrow next-arrow" id="cert-next" aria-label="Next Certificates">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
       </div>
     </div>
   </section>

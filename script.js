@@ -264,4 +264,47 @@ document.addEventListener('DOMContentLoaded', () => {
       formStatus.style.display = 'block';
     }
   }
+
+  // --- Certificates Horizontal Slider Navigation ---
+  const certSlider = document.getElementById('certificates-slider');
+  const prevBtn = document.getElementById('cert-prev');
+  const nextBtn = document.getElementById('cert-next');
+
+  if (certSlider && prevBtn && nextBtn) {
+    prevBtn.addEventListener('click', () => {
+      certSlider.scrollBy({ left: -360, behavior: 'smooth' });
+    });
+    nextBtn.addEventListener('click', () => {
+      certSlider.scrollBy({ left: 360, behavior: 'smooth' });
+    });
+  }
+
+  // --- PDF.js Client-Side Preview Generator ---
+  if (window.pdfjsLib) {
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    document.querySelectorAll('.pdf-canvas').forEach(canvas => {
+      const pdfUrl = canvas.getAttribute('data-pdf');
+      if (pdfUrl) {
+        pdfjsLib.getDocument(pdfUrl).promise.then(pdf => {
+          return pdf.getPage(1);
+        }).then(page => {
+          const viewport = page.getViewport({ scale: 0.8 });
+          canvas.width = viewport.width;
+          canvas.height = viewport.height;
+          const renderContext = {
+            canvasContext: canvas.getContext('2d'),
+            viewport: viewport
+          };
+          return page.render(renderContext).promise;
+        }).then(() => {
+          const fallback = canvas.nextElementSibling;
+          if (fallback && fallback.classList.contains('cert-preview-fallback')) {
+            fallback.style.display = 'none';
+          }
+        }).catch(err => {
+          console.warn('PDF.js preview fallback active:', err);
+        });
+      }
+    });
+  }
 });
